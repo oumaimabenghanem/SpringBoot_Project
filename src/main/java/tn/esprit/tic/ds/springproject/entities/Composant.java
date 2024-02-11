@@ -14,5 +14,9 @@ public class Composant implements Serializable {
     private Long idComposant; // Clé primaire
     private String composant;
     private Float prix;
+    @ManyToOne
+    Menu menu;
+    @OneToOne
+    private DetailComposant detailComposant;
 
 }

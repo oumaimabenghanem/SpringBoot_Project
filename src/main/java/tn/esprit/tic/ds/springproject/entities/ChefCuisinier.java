@@ -3,6 +3,7 @@ package tn.esprit.tic.ds.springproject.entities;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 @Entity
 @Table( name = "ChefCuisinier")
@@ -17,5 +18,7 @@ public class ChefCuisinier implements Serializable {
     @Enumerated(EnumType.STRING)
 
     private TypeChef typeChef;
+    @ManyToMany(mappedBy="chefCuisiniers", cascade = CascadeType.ALL)
+    private ArrayList<Menu> menus;
 
 }

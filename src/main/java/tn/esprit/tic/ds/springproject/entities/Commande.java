@@ -21,5 +21,8 @@ public class Commande implements Serializable {
     private Float totalCommande;
     private Long note;
 // Constructeur et accesseurs (getters) et mutateurs (setters)
-
+    @ManyToOne
+    Client client;
+    @ManyToOne
+    Menu menu;
 }

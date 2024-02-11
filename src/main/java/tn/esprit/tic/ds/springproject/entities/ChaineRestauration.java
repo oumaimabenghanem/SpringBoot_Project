@@ -3,6 +3,7 @@ package tn.esprit.tic.ds.springproject.entities;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 
 @Entity
@@ -17,4 +18,6 @@ public class ChaineRestauration implements Serializable {
     private String libelle;
     @Temporal(TemporalType.DATE)
     private Date dateCreation;
+    @OneToMany(mappedBy="chaineRestauration")
+    private ArrayList<Restaurant> restaurants;
 }
