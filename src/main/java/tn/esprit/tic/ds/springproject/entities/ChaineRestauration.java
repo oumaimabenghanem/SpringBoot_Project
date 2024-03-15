@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table( name = "ChaineRestauration")
@@ -19,5 +20,5 @@ public class ChaineRestauration implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date dateCreation;
     @OneToMany(mappedBy="chaineRestauration")
-    private ArrayList<Restaurant> restaurants;
+    private List<Restaurant> restaurants;
 }

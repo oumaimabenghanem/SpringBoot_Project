@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table( name = "Restaurant")
@@ -20,6 +21,6 @@ public class Restaurant implements Serializable {
     @ManyToOne
     ChaineRestauration chaineRestauration;
     @OneToMany
-    private ArrayList<Menu> menus;
+    private List<Menu> menus;
 
 }
