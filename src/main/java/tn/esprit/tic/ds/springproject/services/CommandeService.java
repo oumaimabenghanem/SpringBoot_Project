@@ -2,15 +2,16 @@ package tn.esprit.tic.ds.springproject.services;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import tn.esprit.tic.ds.springproject.entities.Commande;
 import tn.esprit.tic.ds.springproject.repositories.CommandeRepository;
 
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 @Service
 @AllArgsConstructor
-
-public class Commande implements ICommande{
+public class CommandeService implements ICommandeService {
     private final CommandeRepository commandeRepository;
 
     @Override
@@ -62,5 +63,4 @@ public class Commande implements ICommande{
     public List<Commande> listeCommandesParClient(String identifiant) {
         return commandeRepository.findByClientIdentifiant(identifiant);
     }
-
 }

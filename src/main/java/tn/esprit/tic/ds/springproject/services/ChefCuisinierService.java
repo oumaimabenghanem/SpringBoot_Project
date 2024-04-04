@@ -6,5 +6,5 @@ import org.springframework.stereotype.Service;
 @Service
 @AllArgsConstructor
 
-public class ChefCuisinier implements IChefCuisinier{
+public class ChefCuisinierService implements IChefCuisinier{
 }
