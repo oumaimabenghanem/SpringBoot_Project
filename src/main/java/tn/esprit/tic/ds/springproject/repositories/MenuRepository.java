@@ -19,5 +19,11 @@ public interface MenuRepository extends /*JpaRepository*/ /*PagingAndSortingRepo
     //2.2 list Menu Par TypeComposant (exemple : les menus contenant de la viande blanche)
     @Query("SELECT m FROM Menu m JOIN m.composants c Join DetailComposant dc WHERE c.detailComposant.idDetailComposant = dc.idDetailComposant and dc.typeComposant = :typeComposant")
     List<Menu> findMenusByMenuDetailComposantTypeComposant(@Param("typeComposant") TypeComposant typeComposant);
+    // 9.1 Afficher les noms des menus ordonnés par prix total
+    @Query("SELECT m.libelleMenu FROM Menu m " +
+            "Where m.typeMenu = :typeMenu " +
+            "ORDER BY m.prixTotal")
+    List<String> retrieveMenuLabelByTypeMenuOrderedByPrice(@Param("typeMenu") TypeMenu typeMenu);
+
 
 }

@@ -2,13 +2,16 @@ package tn.esprit.tic.ds.springproject.services;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import tn.esprit.tic.ds.springproject.entities.Client;
 import tn.esprit.tic.ds.springproject.repositories.ClientRepository;
 
+import java.util.Date;
 import java.util.List;
 @Service
 @AllArgsConstructor
+@Slf4j
 public class ClientService implements IClientService{
     ClientRepository clientRepository;
     @Override
@@ -23,6 +26,8 @@ public class ClientService implements IClientService{
 
     @Override
     public Client updateClient(Client e) {
+        System.out.println("Client "+e.getIdentifiant()+" ,Date premiere visite : "+e.getDatePremiereVisite());
+        log.info("Client "+e.getIdentifiant()+" ,Date premiere visite : "+e.getDatePremiereVisite());
         return clientRepository.save(e);
     }
 
@@ -38,6 +43,8 @@ public class ClientService implements IClientService{
 
     @Override
     public List<Client> addClients(List<Client> Clients) {
-        return (List<Client>) clientRepository.saveAll(Clients);
+        Client c = Client.builder().identifiant("Oumaima").datePremiereVisite(new Date(2024,04,04)).build();
+        List<Client> client1 = (List<Client>) clientRepository.saveAll(Clients);
+        return client1;
     }
 }

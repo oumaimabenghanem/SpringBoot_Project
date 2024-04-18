@@ -1,27 +1,36 @@
 package tn.esprit.tic.ds.springproject.entities;
 import jakarta.persistence.*;
+import lombok.*;
+import lombok.experimental.FieldDefaults;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table( name = "Menu")
+@Getter
+@Setter
+@ToString
+@AllArgsConstructor
+@NoArgsConstructor
+@Table(name = "Menu")
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class Menu implements Serializable{
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     @Column(name="idMenu")
-    private Long idMenu; // Clé primaire
-    private String libelleMenu;
+     Long idMenu; // Clé primaire
+     String libelleMenu;
     @Enumerated(EnumType.STRING)
 
-    private TypeMenu typeMenu;
-    private Float prixTotal;
+     TypeMenu typeMenu;
+     Float prixTotal;
 // Constructeur et accesseurs (getters) et mutateurs (setters)
     @OneToMany(mappedBy="menu")
-    private List<Commande> commandes;
+     List<Commande> commandes;
     @OneToMany(mappedBy="menu")
-    private List<Composant> composants;
+     List<Composant> composants;
     @ManyToMany
-    private List<ChefCuisinier> chefCuisiniers;
+     List<ChefCuisinier> chefCuisiniers;
 
 }

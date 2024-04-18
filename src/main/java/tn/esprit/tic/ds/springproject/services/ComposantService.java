@@ -6,5 +6,5 @@ import org.springframework.stereotype.Service;
 @Service
 @AllArgsConstructor
 
-public class Composant implements IComposant{
+public class ComposantService implements IComposant{
 }
