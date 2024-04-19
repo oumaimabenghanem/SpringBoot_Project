@@ -6,9 +6,12 @@ import org.springframework.stereotype.Service;
 import tn.esprit.tic.ds.springproject.entities.Client;
 import tn.esprit.tic.ds.springproject.entities.*;
 import tn.esprit.tic.ds.springproject.repositories.ChefCuisinierRepository;
+import tn.esprit.tic.ds.springproject.repositories.ComposantRepository;
 import tn.esprit.tic.ds.springproject.repositories.MenuRepository;
+import tn.esprit.tic.ds.springproject.repositories.ClientRepository;
 
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -18,6 +21,7 @@ import java.util.Set;
 
 public class MenuService implements IMenuService{
     private final MenuRepository menuRepository;
+    private final ComposantRepository composantRepository;
     private final ChefCuisinierRepository chefCuisinierRepository;
 
     @Override
@@ -96,27 +100,6 @@ public class MenuService implements IMenuService{
     @Override
     public List<Menu> listeMenuSelonTypeMenuEtprixComposantsSuperieurAUnMontant(TypeMenu typeMenu, Float prixTotal) {
         return menuRepository.findByTypeMenuAndComposantsPrixGreaterThan(typeMenu, prixTotal);
-    }
-
-    @Override
-    public Menu ajoutComposantsEtMiseAjourPrixMenu(Set<Composant> composants, Long idMenu) {
-        Menu menu = menuRepository.findById(idMenu).orElse(null);
-//        if (menu == null) {
-//            return null;
-//        }
-//
-//        menu.getComposants().addAll(composants);
-//
-//        menu.setPrixTotal(menu.getComposants().stream()
-//                .map(Composant::getPrix)
-//                .reduce(0f, Float::sum));
-//
-//        if (menu.getPrixTotal() > 20) {
-//            log.error("Le prix total du menu ne doit pas dépasser 20 dinars");
-//            return null;
-//        }
-//
-        return menuRepository.save(menu);
     }
 
 }

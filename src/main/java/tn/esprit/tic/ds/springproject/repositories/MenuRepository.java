@@ -2,6 +2,7 @@ package tn.esprit.tic.ds.springproject.repositories;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 import tn.esprit.tic.ds.springproject.entities.Client;
 import tn.esprit.tic.ds.springproject.entities.Menu;
 import tn.esprit.tic.ds.springproject.entities.TypeComposant;
@@ -9,6 +10,7 @@ import tn.esprit.tic.ds.springproject.entities.TypeMenu;
 
 
 import java.util.List;
+@Repository
 
 public interface MenuRepository extends /*JpaRepository*/ /*PagingAndSortingRepository*/ CrudRepository<Menu,Long> {
     //1.4 liste des menus selon le type menu avec le prix  des composants est supérieur à un montant donné en paramètres
@@ -25,5 +27,5 @@ public interface MenuRepository extends /*JpaRepository*/ /*PagingAndSortingRepo
             "ORDER BY m.prixTotal")
     List<String> retrieveMenuLabelByTypeMenuOrderedByPrice(@Param("typeMenu") TypeMenu typeMenu);
 
-
+    Menu findByLibelleMenu(String libelle);
 }

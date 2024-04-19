@@ -1,4 +1,4 @@
-package tn.esprit.tic.ds.springproject.Configurations;
+package tn.esprit.tic.ds.springproject.configurations;
 
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Contact;

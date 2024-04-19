@@ -28,4 +28,6 @@ public interface ICommandeService {
     void removeCommande(Long idCommande);
 
     List<Commande> listeCommandesParClient(String identifiant);
+    void ajouterCommandeEtaffecterAClientEtMenu(Commande commande, String identifiant, String libelleMenu);
+
 }

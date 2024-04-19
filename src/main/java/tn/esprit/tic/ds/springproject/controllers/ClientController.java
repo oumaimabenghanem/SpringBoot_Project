@@ -13,7 +13,7 @@ import java.util.List;
 @RequestMapping("/client")
 
 public class ClientController {
-    IClientService clientService;
+    private final IClientService clientService;
     // http://localhost:8089/menu/client/retrieve-all-clients
     @GetMapping("/retrieve-all-clients")
     public List<Client> getClients() {
@@ -41,5 +41,10 @@ public class ClientController {
     public Client updateClient(@RequestBody Client c) {
         Client client= clientService.updateClient(c);
         return client;
+    }
+    // http://localhost:8089/menu/client/add-clients
+    @PostMapping("/add-clients")
+    public List<Client> addClients(@RequestBody List<Client> clients) {
+        return clientService.addClients(clients);
     }
 }

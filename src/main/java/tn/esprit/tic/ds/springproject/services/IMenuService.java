@@ -1,10 +1,7 @@
 package tn.esprit.tic.ds.springproject.services;
 
 import org.springframework.stereotype.Service;
-import tn.esprit.tic.ds.springproject.entities.ChefCuisinier;
-import tn.esprit.tic.ds.springproject.entities.Client;
-import tn.esprit.tic.ds.springproject.entities.Menu;
-import tn.esprit.tic.ds.springproject.entities.TypeMenu;
+import tn.esprit.tic.ds.springproject.entities.*;
 
 import java.util.List;
 import java.util.Set;
@@ -27,7 +24,6 @@ public interface IMenuService {
 
     List<Menu> listeMenuSelonTypeMenuEtprixComposantsSuperieurAUnMontant(TypeMenu typeMenu, Float prixTotal);
 
-    Menu ajoutComposantsEtMiseAjourPrixMenu(Set<Composant> composants, Long idMenu);
 
 
 }

@@ -1,12 +1,19 @@
 package tn.esprit.tic.ds.springproject.controllers;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.tic.ds.springproject.entities.Commande;
 import tn.esprit.tic.ds.springproject.services.ICommandeService;
 
 import java.time.LocalDate;
 import java.util.List;
+import org.springframework.web.bind.annotation.*;
+import io.swagger.v3.oas.annotations.Parameter;
 
 @RestController
 @AllArgsConstructor
@@ -95,6 +102,26 @@ public class CommandeController {
     public List<Commande> listeCommandesParClient(@PathVariable("identifiant") String identifiant) {
         List<Commande> commandes = commandeService.listeCommandesParClient(identifiant);
         return commandes;
+    }
+    @Operation(summary = "Ajouter une commande et l'affecter à un client et un menu")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "Commande ajoutée et affectée à un client et un menu"),
+            @ApiResponse(responseCode = "400", description = "Commande non ajoutée ou non affectée à un client ou un menu")
+    })
+    @PostMapping("/ajouter-commande-et-affecter-a-client-et-menu/{identifiant}/{libelleMenu}")
+    public ResponseEntity<?> ajouterCommandeEtAffecterAClientEtMenu(
+            @Parameter(description = "Commande à ajouter et affecter à un client et un menu", required = true)
+            @RequestBody Commande commande,
+            @Parameter(description = "Identifiant du client à affecter à la commande")
+            @PathVariable("identifiant") String identifiant,
+            @Parameter(description = "Libellé du menu à affecter à la commande")
+            @PathVariable("libelleMenu") String libelleMenu) {
+        try {
+            commandeService.ajouterCommandeEtaffecterAClientEtMenu(commande, identifiant, libelleMenu);
+            return ResponseEntity.status(HttpStatus.CREATED).build();
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
     }
 
 
