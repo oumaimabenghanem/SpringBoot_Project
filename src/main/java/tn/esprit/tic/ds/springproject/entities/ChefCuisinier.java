@@ -2,6 +2,8 @@ package tn.esprit.tic.ds.springproject.entities;
 
 import jakarta.persistence.*;
 
+
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
